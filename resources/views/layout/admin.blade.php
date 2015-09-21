@@ -4,23 +4,25 @@
         <meta charset="UTF-8">
         <title>Agnus Cloud</title>
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons -->
         <link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-        <!-- DATA TABLES 
-        <link href="{{ asset('/css/datatables/dataTables.bootstrap.css') }}" rel="stylesheet"> -->
-        <!-- Theme style -->
+
         <link href="{{ asset('/css/AdminLTE.css') }}" rel="stylesheet">
         
-        <!-- Select2 -->
+       <!-- Daterange picker -->
+       <link href="{{ asset('/js/daterangepicker/daterangepicker-bs3.css') }}" rel="stylesheet" type="text/css" />
+       <link href="{{ asset('/js/datepicker/css/datepicker.css') }}" rel="stylesheet" type="text/css" />
+
+        
+    <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('/select/select2/dist/css/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('/select/select2-bootstrap-css/select2-bootstrap.css') }}">
     
     <link href="{{ asset('/css/material/animate-css/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/material/sweet-alert/sweet-alert.min.css') }}" rel="stylesheet">
-
-
+    
      {{-- Upload --}}
      <link rel="stylesheet" href="{{ asset('/jquery-file-upload/css/jquery.fileupload.css') }}">
     
@@ -45,9 +47,10 @@
                 </a>
                 <div class="navbar-right">
                     <ul class="nav navbar-nav">
-                        <!-- Messages -->
-                        @include('layout.partials.alertmenu') 
-                        <!-- User Account -->
+                        {{-- 
+                        @include('layout.partials.alertmenu')
+                        --}} 
+                        {{-- User Account --}} 
                         @include('layout.partials.infouser')
                     </ul>
                 </div>
@@ -93,7 +96,7 @@
 
 @section('scripts')
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>
         
         <!-- DATA TABES SCRIPT -->
         <script src="{{ asset('/js/plugins/datatables/jquery.dataTables.js') }}" type="text/javascript"></script>
@@ -109,7 +112,6 @@
        <script src="{{ asset('/js/pages/jquery.maskedinput.min.js') }}"></script>
        <script src="{{ asset('/js/pages/form-elements.js') }}"></script>
                
-        <script src="{{ asset('/js/bootstrap-datepicker.min.js') }}"></script>
         <!-- page script -->
 
         <!-- Validator -->
@@ -118,8 +120,7 @@
         <script src="{{ asset('/jquery-file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
         <script src="{{ asset('/jquery-file-upload/js/jquery.fileupload.js') }}"></script>
         
-
-        </script>
+        
         <script src="{{ asset('/css/material/sweet-alert/sweet-alert.min.js') }}"></script>
 
 <script type="text/javascript">

@@ -11,15 +11,19 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'DashboardController@index');
 
-Route::get('home', 'HomeController@index');
+Route::group(['prefix' => 'dashboard'], function() {
+    
+    Route::get('',                ['as'=>'dashboard.index',         'uses' => 'DashboardController@index']);
 
+});
 
 
 Route::group(['prefix' => 'api'], function() {
     
     Route::get('usuarios',        ['uses' => 'UsuarioController@usuariosForSelect']);
+    Route::get('{cnpj}/empresa',  ['uses' => 'UsuarioController@empresa']);
 
 });
 
@@ -108,6 +112,23 @@ Route::group(['prefix'=>'contratos','where'=>['id'=>'[0-9]+']],function() {
     Route::get('{contratoId}/download/{fileId}', ['as' => 'files.download', 'uses' => 'FileController@download']);
     
     Route::get('{contratoId}/remover/{fileId}',  ['as' => 'files.destroy', 'uses' => 'FileController@destroy']);      
+});
+
+Route::group(['prefix'=>'financeiro','where'=>['id'=>'[0-9]+']],function() {
+ 
+    Route::get('',                ['as'=>'financeiro', 'uses'=>'FinanceiroController@index']);
+    
+    Route::get('create',          ['as'=>'financeiro.create', 'uses'=>'FinanceiroController@create']);
+
+    Route::post('store',          ['as'=>'financeiro.store', 'uses'=>'FinanceiroController@store']);
+
+    Route::delete('{id}/destroy', ['as'=>'financeiro.destroy', 'uses'=>'FinanceiroController@destroy']);
+
+    Route::get('{id}/editar',     ['as'=>'financeiro.edit', 'uses'=>'FinanceiroController@edit']);
+
+    Route::post('{id}/update',    ['as'=>'financeiro.update', 'uses'=>'FinanceiroController@update']); 
+
+    Route::get('{id}/pagamento', ['as'=>'financeiro.pagamento', 'uses'=>'FinanceiroController@pagamento']);        
 });
 
 

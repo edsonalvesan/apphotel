@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UsuarioRequest;
 use App\ARep\Repositories\IUsuarioRepository as Repository;
 use \Response as Response;
+use App\Usuario as Usuario;
 
 class UsuarioController extends Controller {
 
@@ -12,7 +13,7 @@ class UsuarioController extends Controller {
 
 	public function __construct(Repository $repository)
 	{
-		$this->middleware('auth');
+		//$this->middleware('auth');
 		$this->repository = $repository;
 	}
 
@@ -37,7 +38,7 @@ class UsuarioController extends Controller {
 	public function store(UsuarioRequest $request)
 	{
 		
-		$result = $this->rspository->store($request->all());        
+		$result = $this->repository->store($request->all());        
         
         return $this->retornoOperacao($result,'salvar');
         
@@ -103,7 +104,23 @@ class UsuarioController extends Controller {
 	public function usuariosForSelect()
 	{
 		
-		return Response::json($this->usuariosForSelect1(), 200);
+		//return Response::json($this->usuariosForSelect1(), 200);
+		header('content-type: application/json; charset=utf-8'); 
+		header("access-control-allow-origin: *");
+		return Usuario::all();
+	}
+
+    
+    public function empresa($cnpj)
+	{
+		
+		//dd($cnpj);
+
+		header('content-type: application/json; charset=utf-8'); 
+		header("access-control-allow-origin: *");
+		$usuarios = Usuario::where('rg','like','%'.$cnpj.'%');
+		//return $usuarios;
+		return Usuario::find($cnpj);
 	}
 
 
@@ -131,7 +148,7 @@ public function usuariosForSelect1()
         $result = array();
 
         foreach ($users as $key => $value) {
-            $result[$value->id] = $value->name;
+            $result[$value->id] = $value->nome;
         }
 
         return $result;

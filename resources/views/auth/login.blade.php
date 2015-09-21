@@ -1,61 +1,86 @@
-@extends('app')
+<!DOCTYPE html>
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
 
-@section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Login</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
+    <!-- Vendor CSS -->
+    <link href="{{ asset('/css/material/animate-css/animate.min.css') }}" rel="stylesheet">
 
-					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+    <!-- CSS -->
+    <link href="{{ asset('/css/app.min.css') }}" rel="stylesheet">
+
+<script>
+function loadLoginOnClick(){  
+ 
+        document.login.submit();  
+      
+}
+</script>
+</head>
+
+ 
+
+<body class="login-content">
+
+    <!-- Login -->
+    <div class="lc-block toggled" id="l-login">        
+        <form name="login" class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-							</div>
-						</div>
+       <div class="form-group">
+                <div class="input-group m-b-20">
+                    <span class="input-group-addon"><i class="md md-person"></i></span>
+                    <div class="fg-line">
+                        <input type="email" class="form-control" name="email" placeholder="E-mail" value="{{ old('email') }}">
+                    </div>
+                </div>
+            </div>
+      <div class="form-group">
+                <div class="input-group m-b-20">
+                    <span class="input-group-addon"><i class="md md-accessibility"></i></span>
+                    <div class="fg-line">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                </div>
+            </div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
-							</div>
-						</div>
+            <div class="clearfix"></div>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Remember Me
-									</label>
-								</div>
-							</div>
-						</div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember">
+                        <i class="input-helper"></i>
+                        Lembrar-me
+                    </label>
+                </div>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
+            </div>
 
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-@endsection
+      
+        </form>
+      
+      <a href="javascript:loadLoginOnClick()" class="btn btn-login btn-danger btn-float"><i class="md md-arrow-forward"></i></a>
+        
+        
+       
+        <ul class="login-navigation">        
+         <a class="btn btn-link" href="{{ url('/password/email') }}">Esqueceu sua senha?</a>
+        {{-- 
+         <a class="btn btn-link" href="{{ url('/auth/register') }}">Registrar</a>
+        --}}
+        </ul>
+    </div>
+
+    
+
+    <!-- Javascript Libraries -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="{{ asset('/js/waves.min.js') }}"></script>
+    <script src="{{ asset('/js/functions.js') }}"></script>
+</body>
+</html>

@@ -66,8 +66,8 @@
                                  @foreach($contratos as $contrato)
                                  <tr>
                                      <td>{{$contrato->id}}</td>
-                                     <td>{{$contrato->locatario->nome}}</td>
-                                     <td>{{$contrato->proprietario->nome}}</td>
+                                     <td>{{$contrato->usu}}</td>
+                                     <td>{{$contrato->pro}}</td>
                                      <td>{{$contrato->data_inicio}}</td>
                                      <td>{{$contrato->data_fim}}</td>
                                      <td>{{$contrato->valor_contrato}}</td>
@@ -85,9 +85,9 @@
                                  @endforeach
                                 </tbody>     
                                     </table>
-
+                                   
                                     {!! $contratos->render() !!}
-                                    
+                                  
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div>

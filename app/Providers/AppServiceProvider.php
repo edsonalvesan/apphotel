@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider {
 	{
 			
 	    $this->app->bind(
+			'App\ARep\Repositories\IFinanceiroRepository',
+			'App\ARep\Repositories\FinanceiroRepository'
+		);
+
+	    $this->app->bind(
 			'App\ARep\Repositories\IContratoRepository',
 			'App\ARep\Repositories\ContratoRepository'
 		);
@@ -45,6 +50,8 @@ class AppServiceProvider extends ServiceProvider {
 			'Illuminate\Contracts\Auth\Registrar',
 			'App\Services\Registrar'
 		);
+
+
 	}
 
 }

@@ -52,6 +52,8 @@
 
 @section('scripts')
 @parent
-<script src="{{ asset('/js/validator.js') }}"></script>
+{{-- <script src="{{ asset('/js/validator.js') }}"></script> --}}
 <script src="{{ asset('/js/contratos/contratos.js') }}"></script>
+<script src="{{ asset('/js/daterangepicker/daterangepicker.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/datepicker/js/bootstrap-datepicker.js') }}"></script>
 @endsection

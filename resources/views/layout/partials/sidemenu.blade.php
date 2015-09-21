@@ -1,13 +1,13 @@
 
 
-{{-- 
+
 <li>
-    <a href="inicio">
+    <a href="{{ route('dashboard.index') }}">
         <i class="fa fa-dashboard"></i>
         <span>Dashboard</span>
     </a>
 </li> 
---}}
+
 
                     
      
@@ -27,7 +27,7 @@
                 @else
                 <li> 
                 @endif
-                 <a href="{{ url('usuarios') }}">
+                 <a href="{{ route('usuarios') }}">
                     <i class="fa fa-angle-double-right"></i> Usuários</a>
                 </li>
                     
@@ -44,7 +44,7 @@
                 @else
                 <li> 
                 @endif
-                            <a href="{{ url('imobiliarias') }}">
+                            <a href="{{ route('imobiliarias') }}">
                                 <i class="fa fa-angle-double-right"></i>  Imobiliárias</a>
                         </li>
                         
@@ -54,7 +54,7 @@
                 @else
                 <li> 
                 @endif
-                            <a href="{{ url('hotel') }}">
+                            <a href="{{ route('hotel') }}">
                                 <i class="fa fa-angle-double-right"></i>  Hotel</a>
                         </li>               
                         
@@ -98,8 +98,12 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li>
-                    <a href="{{ url('usuario') }}">
+               @if($selectItem == 'fluxocaixa') 
+                <li class="active">
+                @else
+                <li> 
+                @endif
+                    <a href="{{ route('financeiro') }}">
                         <i class="fa fa-angle-double-right"></i> Fluxo de Caixa</a>
                     </li>
 
